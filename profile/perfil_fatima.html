@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Perfil de usuario</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <!-- Font Awesome if you need it
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  -->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/691527b450.js" crossorigin="anonymous"></script>
+
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    button {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    header {
+        display: flex;
+        width: 90%;
+        height: 10vh;
+        margin: auto;
+        align-items: center;
+    }
+
+    .logo-container,
+    .nav-links,
+    .cart {
+        display: flex;
+    }
+
+    .logo-container {
+        flex: 1;
+    }
+
+    .logo {
+        font-weight: 400;
+        margin: 5px;
+    }
+
+    nav {
+        flex: 2;
+    }
+
+    .nav-links {
+        justify-content: space-around;
+        list-style: none;
+    }
+
+    .nav-link {
+        color: #5f5f79;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    .cart {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .presentation {
+        display: flex;
+        width: 90%;
+        margin: auto;
+        min-height: 80vh;
+        align-items: center;
+    }
+
+    .introduction {
+        flex: 1;
+    }
+
+    .intro-text h1 {
+        font-size: 44px;
+        font-weight: 500;
+        background: linear-gradient(to right, #494964, #6f6f89);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .intro-text p {
+        margin-top: 5px;
+        font-size: 22px;
+        color: #585772;
+    }
+
+    .cta {
+        padding: 50px 0px 0px 0px;
+    }
+
+    .cta-select {
+        border: 2px solid #c36cbb;
+        background: transparent;
+        color: #c36cbb;
+        width: 150px;
+        height: 50px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .cta-add {
+        background: #c36cbb;
+        width: 150px;
+        height: 50px;
+        cursor: pointer;
+        font-size: 16px;
+        border: none;
+        color: white;
+        margin: 30px 0px 0px 30px;
+    }
+
+    .cover {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        height: 60vh;
+    }
+
+    .cover img {
+        height: 100%;
+        filter: drop-shadow(0px 5px 3px black);
+        animation: drop 1.5s ease;
+    }
+
+    .big-circle {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: -1;
+        opacity: 0.5;
+        height: 80%;
+    }
+
+    .medium-circle {
+        position: absolute;
+        top: 30%;
+        right: 30%;
+        z-index: -1;
+        height: 60%;
+        opacity: 0.4;
+    }
+
+    .small-circle {
+        position: absolute;
+        bottom: 0%;
+        left: 20%;
+        z-index: -1;
+    }
+
+    .laptop-select {
+        width: 15%;
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        right: 20%;
+    }
+
+    @keyframes drop {
+        0% {
+            opacity: 0;
+            transform: translateY(-80px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .presentation {
+            flex-direction: column;
+        }
+
+        .introduction {
+            margin-top: 5vh;
+            text-align: center;
+        }
+
+        .intro-text h1 {
+            font-size: 30px;
+        }
+
+        .intro-text p {
+            font-size: 18px;
+        }
+
+        .cta {
+            padding: 10px 0px 0px 0px;
+        }
+
+        .laptop-select {
+            bottom: 5%;
+            right: 50%;
+            width: 50%;
+            transform: translate(50%, 5%);
+        }
+
+        .cover img {
+            height: 80%;
+        }
+
+        .small-circle,
+        .medium-circle,
+        .big-circle {
+            opacity: 0.2;
+        }
+    }
+</style>
+
+<body>
+
+    <!-- NAVEGACION -->
+    <nav class="navbar navbar-expand-lg bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../img/LogoOficial.jpg" alt="Logo" width="50" height="65"
+                    class="d-inline-block align-text-top">
+                PLAPERTS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobrePlaperts">Nuestros Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Productos y Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Contactos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reviews">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Sumate a Plaperts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Inicio Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- DATOS PERFIL-->
+
+    <div class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover"
+        style="background-image:url(''); background: #85929E;  ">
+
+        <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
+            <!--Main Col-->
+            <div id="profile"
+                class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
+                <div class="p-4 md:p-12 text-center lg:text-left">
+                    <!-- Image foto de perfil-->
+                    <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
+                        style="background-image: url('../img/perfil_Fatima/1.jpg')"></div>
+
+                    <h1 class="text-3xl font-bold pt-8 lg:pt-0 text-green-700">MSc. Derecho Penal</h1>
+                    <div>
+                        <p class="h-4 fill-current text-green-700"><i class="fa-solid fa-user"></i>B. Fátima Vargas
+                            Montaño</p>
+                    </div>
+                    <div>
+                        <p class=" fill-current text-green-700"><i class="fa-solid fa-location-dot"></i> localizacion -
+                            25.0000° N, 71.0000° W</p>
+                    </div>
+                    <div>
+                        <p class=" fill-current text-green-700">
+                            A que se dedica...
+                        </p>
+                    </div>
+                    <p class=" fill-current text-green-700">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Veniam voluptate aperiam ducimus,
+                        laborum
+                        est illo optio fuga amet quaerat consequatur. Molestias voluptate eius accusantium tenetur.</p>
+                    <div class="pt-12 pb-8">
+                        <button class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+                            Ponerse en contacto...
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--Img Col-->
+            <div class="w-full lg:w-2/5">
+                <!-- Imagen de perfil grande para la barra lateral (escritorio) -->
+                <img src="../img/perfil_Fatima/2.jpg" class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block">
+            </div>
+
+
+            <!-- Pin to top right corner -->
+            <div class="absolute top-14 right-0 h-12 w-18 p-4">
+                <button class="js-change-theme focus:outline-none">🌙</button>
+            </div>
+        </div>
+        <!-- FIN DATOS PERFIL-->
+
+    </div>
+
+    <!-- SERVICIO-->
+    <main>
+        <section class="presentation">
+            <div class="introduction">
+                <div class="intro-text">
+                    <h1>titulo</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque adipisci voluptate sit enim
+                        praesentium pariatur culpa quasi a, deleniti repellendus exercitationem iure, minima ex facilis.
+                    </p>
+                </div>
+                <div class="cta">
+                    <button class="cta-select">fffff</button>
+                    <button class="cta-add">fffff</button>
+                </div>
+            </div>
+            <div class="cover">
+                <img src="../img/perfil_Fatima/4.jpeg" alt="matebook" />
+            </div>
+        </section>
+
+        <div class="laptop-select">
+            <img src="../img/perfil_Fatima/5.jpeg" alt="" />
+            <img src="../img/perfil_Fatima/6.jpeg" alt="" />
+            <img src="./img/dot-full.svg" alt="" />
+            <img src="./img/dot-full.svg" alt="" />
+            <img src="./img/arrow-right.svg" alt="" />
+        </div>
+
+        <img class="big-circle" src="./img/big-eclipse.svg" alt="" />
+        <img class="medium-circle" src="./img/mid-eclipse.svg" alt="" />
+        <img class="small-circle" src="./img/small-eclipse.svg" alt="" />
+    </main>
+    <!-- FIN SERVICIO-->
+
+    <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@4"></script>
+    <script>
+        //Init tooltips
+        tippy('.link', {
+            placement: 'bottom'
+        })
+
+        //Toggle mode
+        const toggle = document.querySelector('.js-change-theme');
+        const body = document.querySelector('body');
+        const profile = document.getElementById('profile');
+
+
+        toggle.addEventListener('click', () => {
+
+            if (body.classList.contains('text-gray-900')) {
+                toggle.innerHTML = "☀️";
+                body.classList.remove('text-gray-900');
+                body.classList.add('text-gray-100');
+                profile.classList.remove('bg-white');
+                profile.classList.add('bg-gray-900');
+            } else {
+                toggle.innerHTML = "🌙";
+                body.classList.remove('text-gray-100');
+                body.classList.add('text-gray-900');
+                profile.classList.remove('bg-gray-900');
+                profile.classList.add('bg-white');
+
+            }
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
